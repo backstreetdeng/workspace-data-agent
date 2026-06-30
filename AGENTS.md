@@ -291,14 +291,33 @@ subprocess.run([
 
 ## Git 提交规范
 
+### 主动提交规则（2026-06-30 19:23 老大硬约束）
+
+- **改完代码主动提交**：不要等老大说"提交"才 commit，每个有意义改动完成后立即提交本地仓库
+- **commit 格式**（必含 3 要素）：提交者 / 文件清单 / 原因
+  ```bash
+  git commit -m "[data-agent] 提交者：data-agent | 文件：xxx.py, yyy.md | 原因：修复 xxx bug"
+  ```
+- **push 格式**：与本地 commit 保持一致（commit message 不变），只在合适时机 push 到远端
+- **不要 commit**：临时日志、调试输出、.pyc、.bak 等 .gitignore 已规定的文件
+- **完成一个 data_package 任务后提交一次**（保留旧规则）
+
+### 示例
+
 ```bash
-git -c http.proxy= -c https.proxy= push origin main  # 临时绕过代理
-git commit -m "[data-agent] 提交描述"
+# 改动完成后立即本地提交
+git add skills/automotive-vector-rag/SKILL.md
+git commit -m "[data-agent] 提交者：data-agent | 文件：skills/automotive-vector-rag/SKILL.md | 原因：补全 v3.2 协议描述"
+
+# 合适时机 push（与本地 commit 同一 message，不另写）
+git push origin main
 ```
 
-- 完成一个 data_package 任务后提交一次
-- 不 commit：临时日志、调试输出、.pyc
-- push 前必须确认代理可用
+### 代理临时绕过
+
+```bash
+git -c http.proxy= -c https.proxy= push origin main  # 临时绕过代理
+```
 
 ## 异常处理
 
