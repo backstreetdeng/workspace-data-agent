@@ -1,0 +1,8 @@
+﻿byd_query.py
+debug_stages.py
+q.py
+__pycache__/
+temp/
+*.log
+*.bak
+bak_html/
